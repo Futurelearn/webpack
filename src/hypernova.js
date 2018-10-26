@@ -51,6 +51,9 @@ if (process.env.NODE_ENV === 'production') {
     minimizer: [new TerserPlugin({
       parallel: true,
       cache: true,
+      terserOptions: {
+        compress: false,
+      },
     })],
   }});
 }
