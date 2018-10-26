@@ -18,6 +18,7 @@ module.exports = {
       cache: true,
       sourceMap: false,
       terserOptions: {
+        compress: false,
         ecma: 8,
         warnings: false,
         safari10: true,
