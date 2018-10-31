@@ -4,13 +4,7 @@ const config = require('./config');
 const loaders = require('./loaders');
 
 module.exports = {
-  entry: Object.assign(config.entries, {
-    polyfills: [
-      '@babel/polyfill',
-      'whatwg-fetch',
-      'classlist.js',
-    ],
-  }),
+  entry: config.entries,
   resolve: {
     extensions: config.extensions,
     modules: [...config.resolvedPaths, 'node_modules'],
