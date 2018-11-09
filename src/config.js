@@ -31,4 +31,5 @@ module.exports = {
     path: resolve('public', config.public_output_path),
     publicPath: `/${config.public_output_path}/`,
   },
+  assetsVersion: config.assets_version || '1.0',
 };

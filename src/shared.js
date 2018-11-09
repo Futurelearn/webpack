@@ -42,7 +42,7 @@ module.exports = {
   output: {
     path: config.output.path,
     publicPath: config.output.publicPath,
-    filename: '[name]-[chunkhash].js',
-    chunkFilename: '[name]-[chunkhash].js',
+    filename: `[name]-[chunkhash]-${config.assetsVersion}.js`,
+    chunkFilename: `[name]-[chunkhash]-${config.assetsVersion}.js`,
   },
 };

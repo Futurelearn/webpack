@@ -5,6 +5,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const { HashedModuleIdsPlugin, NamedChunksPlugin } = require('webpack');
 const shared = require('./shared');
+const config = require('./config');
 
 module.exports = {
   ...shared,
@@ -36,7 +37,7 @@ module.exports = {
       test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
     }]),
     new MiniCssExtractPlugin({
-      filename: '[name]-[contenthash].css',
+      filename: `[name]-[contenthash]-${config.assetsVersion}.css`,
     }),
     new HashedModuleIdsPlugin({}),
     new NamedChunksPlugin((chunk) => {
