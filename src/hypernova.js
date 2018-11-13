@@ -1,7 +1,7 @@
 const { resolve } = require('path');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const nodeExternals = require('webpack-node-externals');
-const { DefinePlugin } = require('webpack');
+const { EnvironmentPlugin, DefinePlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const shared = require('./shared');
@@ -21,14 +21,14 @@ const config = {
     ],
   },
   plugins: [
-    ...shared.plugins,
+    new EnvironmentPlugin({ ...process.env }),
+    new DefinePlugin({
+      __SERVER__: true,
+    }),
     new WebpackAssetsManifest({
       entrypoints: false,
       writeToDisk: true,
       publicPath: `./public${shared.output.publicPath}server/`,
-    }),
-    new DefinePlugin({
-      __SERVER__: true,
     }),
   ],
   optimization: {
@@ -45,17 +45,19 @@ const config = {
 
 if (process.env.NODE_ENV === 'production') {
   config.plugins.unshift(new HardSourceWebpackPlugin());
-  Object.assign(config, { optimization: {
-    ...config.optimization,
-    minimize: true,
-    minimizer: [new TerserPlugin({
-      parallel: true,
-      cache: true,
-      terserOptions: {
-        compress: false,
-      },
-    })],
-  }});
+  Object.assign(config, {
+    optimization: {
+      ...config.optimization,
+      minimize: true,
+      minimizer: [new TerserPlugin({
+        parallel: true,
+        cache: true,
+        terserOptions: {
+          compress: false,
+        },
+      })],
+    },
+  });
 }
 
 module.exports = config;

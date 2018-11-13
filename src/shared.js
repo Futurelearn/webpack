@@ -1,5 +1,6 @@
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const { EnvironmentPlugin } = require('webpack');
+const WebpackAssetsManifest = require('webpack-assets-manifest');
 const config = require('./config');
 const loaders = require('./loaders');
 
@@ -19,6 +20,12 @@ module.exports = {
   plugins: [
     new EnvironmentPlugin({ ...process.env }),
     new LodashModuleReplacementPlugin(),
+    new WebpackAssetsManifest({
+      entrypoints: true,
+      writeToDisk: true,
+      publicPath: config.output.publicPath,
+      integrity: true,
+    }),
   ],
   optimization: {
     minimize: false,

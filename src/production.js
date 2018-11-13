@@ -46,10 +46,5 @@ module.exports = {
       }
       return chunk.mapModules(m => relative(m.context, m.request)).join('_');
     }),
-    new WebpackAssetsManifest({
-      entrypoints: true,
-      writeToDisk: true,
-      publicPath: shared.output.publicPath,
-    }),
   ],
 };
