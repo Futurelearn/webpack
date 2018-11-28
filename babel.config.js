@@ -3,6 +3,7 @@ module.exports = (api) => {
     ['@babel/preset-env', {
       shippedProposals: true,
       targets: '> 0.25% , not dead',
+      exclude: ['transform-regenerator', 'transform-async-to-generator'],
     }],
     '@babel/preset-react',
   ];
@@ -20,13 +21,8 @@ module.exports = (api) => {
     [
       'module:fast-async',
       {
-        compiler: {
-          promises: true,
-          generators: false,
-        },
-        runtimePattern: null,
-        useRuntimeModule: false,
-      }
+        spec: true,
+      },
     ],
   ];
 
