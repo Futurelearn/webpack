@@ -17,6 +17,17 @@ module.exports = (api) => {
         spec: true,
       },
     ],
+    [
+      'module:fast-async',
+      {
+        compiler: {
+          promises: true,
+          generators: false,
+        },
+        runtimePattern: null,
+        useRuntimeModule: false,
+      }
+    ],
   ];
 
   if (api.env('test')) {
