@@ -1,5 +1,5 @@
 const {
-  resolve, join, basename, extname,
+  resolve, extname, dirname,
 } = require('path');
 const { safeLoad } = require('js-yaml');
 const { readFileSync } = require('fs');
@@ -11,11 +11,19 @@ const config = safeLoad(readFileSync(configPath), 'utf8')[railsEnv];
 
 const getEntries = (entryPaths) => {
   const results = {};
-  const glob = `**/*{${config.extensions.join(',')}}`;
-  entryPaths.forEach((rootPath) => {
-    const paths = sync(join(rootPath, glob));
+  entryPaths.forEach(({ glob, use_dir_name: useDirName, root_path: rootPath }) => {
+    const entryGlob = `${rootPath}${glob}{${config.extensions.join(',')}}`;
+    const paths = sync(entryGlob);
     paths.forEach((path) => {
-      results[`${basename(path, extname(path))}`] = resolve(path);
+      if (useDirName) {
+        const entryDir = dirname(path);
+        const entryDirWithoutRootPath = entryDir.replace(rootPath, '');
+        results[`${entryDirWithoutRootPath}`] = resolve(path);
+      } else {
+        const pathWithoutRootPath = path.replace(rootPath, '');
+        const pathWithoutExtension = pathWithoutRootPath.replace(extname(path), '');
+        results[`${pathWithoutExtension}`] = resolve(path);
+      }
     });
   });
 
