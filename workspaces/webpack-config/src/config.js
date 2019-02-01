@@ -11,8 +11,10 @@ const config = safeLoad(readFileSync(configPath), 'utf8')[railsEnv];
 
 const getEntries = (entryPaths) => {
   const results = {};
-  entryPaths.forEach(({ glob, use_dir_name: useDirName, root_path: rootPath }) => {
-    const entryGlob = `${rootPath}${glob}{${config.extensions.join(',')}}`;
+  entryPaths.forEach(({
+    glob, use_dir_name: useDirName, root_path: rootPath, resolved_extensions: resolvedExtensions,
+  }) => {
+    const entryGlob = `${rootPath}${glob}{${resolvedExtensions.join(',')}}`;
     const paths = sync(entryGlob);
     paths.forEach((path) => {
       if (useDirName) {
