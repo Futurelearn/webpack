@@ -40,12 +40,7 @@ module.exports = {
       filename: `[name]-[contenthash]-${config.assetsVersion}.css`,
     }),
     new HashedModuleIdsPlugin({}),
-    new NamedChunksPlugin((chunk) => {
-      if (chunk.name) {
-        return chunk.name;
-      }
-      return chunk.mapModules(m => relative(m.context, m.request)).join('_');
-    }),
+    new NamedChunksPlugin(),
     new WebpackAssetsManifest({
       entrypoints: true,
       writeToDisk: true,
