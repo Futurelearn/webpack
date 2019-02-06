@@ -20,7 +20,7 @@ module.exports = {
       sourceMap: false,
       terserOptions: {
         compress: false,
-        ecma: 8,
+        ecma: 5,
         warnings: false,
         safari10: true,
         ie8: false,
