@@ -38,8 +38,9 @@ module.exports = {
   resolvedPaths: config.resolved_paths,
   cachePath: config.cache_path,
   output: {
-    path: resolve('public', config.public_output_path),
-    publicPath: `/${config.public_output_path}/`,
+    path: resolve(config.path),
+    publicPath: config.public_path,
+    hypernovaPublicPath: config.hypernova_public_path,
   },
   assetsVersion: config.assets_version || '1.0',
 };
