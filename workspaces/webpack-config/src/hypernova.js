@@ -5,9 +5,10 @@ const { DefinePlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const shared = require('./shared');
+const config = require('./config');
 const serverSideLoaders = require('./server_side_loaders');
 
-const config = {
+const hypernovaConfig = {
   ...shared,
   name: 'hypernova',
   target: 'node',
@@ -25,7 +26,7 @@ const config = {
     new WebpackAssetsManifest({
       entrypoints: false,
       writeToDisk: true,
-      publicPath: `./public${shared.output.publicPath}server/`,
+      publicPath: config.output.hypernovaPublicPath,
     }),
     new DefinePlugin({
       __SERVER__: true,
@@ -44,9 +45,9 @@ const config = {
 };
 
 if (process.env.NODE_ENV === 'production') {
-  config.plugins.unshift(new HardSourceWebpackPlugin());
-  Object.assign(config, { optimization: {
-    ...config.optimization,
+  hypernovaConfig.plugins.unshift(new HardSourceWebpackPlugin());
+  Object.assign(hypernovaConfig, { optimization: {
+    ...hypernovaConfig.optimization,
     minimize: true,
     minimizer: [new TerserPlugin({
       parallel: true,
@@ -58,4 +59,4 @@ if (process.env.NODE_ENV === 'production') {
   }});
 }
 
-module.exports = config;
+module.exports = hypernovaConfig;
