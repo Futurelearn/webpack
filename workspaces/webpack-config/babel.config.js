@@ -1,25 +1,21 @@
 module.exports = (api) => {
   const presets = [
     ['@babel/preset-env', {
-      shippedProposals: true,
-      targets: '> 0.25% , not dead',
+      modules: false,
+      useBuiltIns: 'usage',
+      targets: {
+        esmodules: true,
+      },
       exclude: ['transform-regenerator', 'transform-async-to-generator'],
     }],
     '@babel/preset-react',
   ];
 
   const plugins = [
-    '@babel/plugin-proposal-object-rest-spread',
     '@babel/plugin-syntax-dynamic-import',
     'lodash',
     [
       '@babel/plugin-proposal-class-properties',
-      {
-        spec: true,
-      },
-    ],
-    [
-      'module:fast-async',
       {
         spec: true,
       },
