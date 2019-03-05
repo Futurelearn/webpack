@@ -9,6 +9,7 @@ module.exports = {
       loader: 'babel-loader',
       options: {
         root: resolve(__dirname, '..', '..'),
+        configFile: resolve(__dirname, '..', '..', 'babel.config.js'),
         cacheDirectory: join(cachePath, 'babel-loader'),
       },
     },
