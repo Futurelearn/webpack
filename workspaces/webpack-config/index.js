@@ -3,6 +3,7 @@ const production = require('./src/production');
 const test = require('./src/test');
 const hypernova = require('./src/hypernova');
 const developmentLegacy = require('./src/development_legacy');
+const productionLegacy = require('./src/production_legacy');
 
 module.exports = {
   development,
@@ -10,4 +11,5 @@ module.exports = {
   production,
   hypernova,
   developmentLegacy,
+  productionLegacy,
 };
