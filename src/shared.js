@@ -13,7 +13,7 @@ module.exports = {
     },
   },
   module: {
-    rules: Object.values(loaders),
+    rules: Object.values(loaders.base),
   },
   mode: 'production',
   plugins: [
