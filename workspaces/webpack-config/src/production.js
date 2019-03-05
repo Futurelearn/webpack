@@ -1,4 +1,3 @@
-const { relative } = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -20,7 +19,7 @@ module.exports = {
       sourceMap: false,
       terserOptions: {
         compress: false,
-        ecma: 5,
+        ecma: 8,
         warnings: false,
         safari10: true,
         ie8: false,
