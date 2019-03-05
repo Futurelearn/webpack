@@ -33,6 +33,7 @@
     "css-loader": "^1.0.0",
     "fast-async": "7",
     "file-loader": "^2.0.0",
+    "fs-extra": "^7.0.1",
     "glob": "^7.1.3",
     "hard-source-webpack-plugin": "^0.13.1",
     "js-yaml": "^3.12.0",
