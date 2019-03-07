@@ -7,6 +7,7 @@ const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const shared = require('./shared');
 const config = require('./config');
 const serverSideLoaders = require('./server_side_loaders');
+const { hypernova } = require('./loaders');
 
 const hypernovaConfig = {
   ...shared,
@@ -18,7 +19,7 @@ const hypernovaConfig = {
     ...shared.module,
     rules: [
       ...Object.values(serverSideLoaders),
-      ...shared.module.rules,
+      ...Object.values(hypernova),
     ],
   },
   plugins: [
