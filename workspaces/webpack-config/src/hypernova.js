@@ -47,17 +47,19 @@ const hypernovaConfig = {
 
 if (process.env.NODE_ENV === 'production') {
   hypernovaConfig.plugins.unshift(new HardSourceWebpackPlugin());
-  Object.assign(hypernovaConfig, { optimization: {
-    ...hypernovaConfig.optimization,
-    minimize: true,
-    minimizer: [new TerserPlugin({
-      parallel: true,
-      cache: true,
-      terserOptions: {
-        compress: false,
-      },
-    })],
-  }});
+  Object.assign(hypernovaConfig, {
+    optimization: {
+      ...hypernovaConfig.optimization,
+      minimize: true,
+      minimizer: [new TerserPlugin({
+        parallel: true,
+        cache: true,
+        terserOptions: {
+          compress: false,
+        },
+      })],
+    },
+  });
 }
 
 module.exports = hypernovaConfig;
