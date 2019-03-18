@@ -4,7 +4,7 @@ module.exports = (api) => {
       modules: false,
       useBuiltIns: 'usage',
       targets: {
-        esmodules: true,
+        node: 'current',
       },
       exclude: ['transform-regenerator', 'transform-async-to-generator'],
     }],

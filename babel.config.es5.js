@@ -4,7 +4,7 @@ module.exports = (api) => {
       modules: false,
       useBuiltIns: 'usage',
       targets: {
-        esmodules: true,
+        esmodules: false,
       },
       exclude: ['transform-regenerator', 'transform-async-to-generator'],
     }],
@@ -12,10 +12,17 @@ module.exports = (api) => {
   ];
 
   const plugins = [
+    '@babel/plugin-proposal-object-rest-spread',
     '@babel/plugin-syntax-dynamic-import',
     'lodash',
     [
       '@babel/plugin-proposal-class-properties',
+      {
+        spec: true,
+      },
+    ],
+    [
+      'module:fast-async',
       {
         spec: true,
       },
