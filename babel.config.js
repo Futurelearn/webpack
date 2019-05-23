@@ -22,6 +22,10 @@ module.exports = (api) => {
     ],
   ];
 
+  if (api.env('development')) {
+    plugins.push('react-hot-loader/babel');
+  }
+
   if (api.env('test')) {
     plugins.push(...[
       '@babel/plugin-transform-modules-commonjs',
