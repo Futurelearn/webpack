@@ -47,7 +47,7 @@
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "^1.1.0",
     "webpack": "4.27.1",
-    "webpack-assets-manifest": "^3.1.0",
+    "webpack-assets-manifest": "https://github.com/webdeveric/webpack-assets-manifest",
     "webpack-cli": "^3.1.2",
     "webpack-node-externals": "^1.7.2"
   }
