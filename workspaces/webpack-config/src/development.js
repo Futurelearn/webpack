@@ -13,4 +13,10 @@ module.exports = {
       publicPath: shared.output.publicPath,
     }),
   ],
+  output: {
+    ...shared.output,
+    filename: `[name].js`,
+    chunkFilename: `[name].js`,
+
+  },
 };
