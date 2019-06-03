@@ -11,6 +11,7 @@ const { hypernova } = require('./loaders');
 
 const hypernovaConfig = {
   ...shared,
+  mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
   name: 'hypernova',
   target: 'node',
   externals: [nodeExternals()],
