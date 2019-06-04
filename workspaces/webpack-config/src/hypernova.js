@@ -11,6 +11,7 @@ const { hypernova } = require('./loaders');
 
 const hypernovaConfig = {
   ...shared,
+  mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
   name: 'hypernova',
   target: 'node',
   externals: [nodeExternals()],
@@ -44,6 +45,13 @@ const hypernovaConfig = {
     path: resolve(shared.output.path, 'server'),
   },
 };
+
+if (process.env.NODE_ENV === 'development') {
+  Object.assign(hypernovaConfig.output, {
+    filename: `[name].js`,
+    chunkFilename: `[name].js`,
+  });
+}
 
 if (process.env.NODE_ENV === 'production') {
   hypernovaConfig.plugins.unshift(new HardSourceWebpackPlugin());
