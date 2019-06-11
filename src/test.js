@@ -14,6 +14,7 @@ module.exports = {
     }),
     new DefinePlugin({
       __REACT_DEVTOOLS_GLOBAL_HOOK__: '({ isDisabled: true })',
+      __FL_DISABLE_IN_TEST__: true,
     }),
   ],
 };
