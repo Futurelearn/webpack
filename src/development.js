@@ -1,7 +1,10 @@
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const shared = require('./shared');
 
-module.exports = {
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const smp = new SpeedMeasurePlugin();
+
+module.exports = smp.wrap({
   ...shared,
   mode: 'development',
   name: 'development',
@@ -33,4 +36,4 @@ module.exports = {
     chunkFilename: `[name].js`,
 
   },
-};
+});
