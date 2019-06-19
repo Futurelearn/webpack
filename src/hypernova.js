@@ -9,6 +9,9 @@ const serverSideLoaders = require('./server_side_loaders');
 const { hypernova } = require('./loaders');
 const CLIENT_SIDE_ONLY_PACKAGES = require('./server_side_loaders/client_side_only_packages');
 
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const smp = new SpeedMeasurePlugin();
+
 const hypernovaConfig = {
   ...shared,
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
@@ -71,4 +74,4 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-module.exports = hypernovaConfig;
+module.exports = smp.wrap(hypernovaConfig);
