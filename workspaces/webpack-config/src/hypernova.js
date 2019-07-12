@@ -3,7 +3,6 @@ const WebpackAssetsManifest = require('webpack-assets-manifest');
 const nodeExternals = require('webpack-node-externals');
 const { DefinePlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const shared = require('./shared');
 const config = require('./config');
 const serverSideLoaders = require('./server_side_loaders');
@@ -57,7 +56,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  hypernovaConfig.plugins.unshift(new HardSourceWebpackPlugin());
   Object.assign(hypernovaConfig, {
     optimization: {
       ...hypernovaConfig.optimization,
