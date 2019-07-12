@@ -5,7 +5,10 @@ const { HashedModuleIdsPlugin, NamedChunksPlugin } = require('webpack');
 const shared = require('./shared');
 const config = require('./config');
 
-module.exports = {
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const smp = new SpeedMeasurePlugin();
+
+module.exports = smp.wrap({
   ...shared,
   name: 'production',
   devtool: 'none',
@@ -41,4 +44,4 @@ module.exports = {
       publicPath: shared.output.publicPath,
     }),
   ],
-};
+});
