@@ -2,6 +2,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { resolve } = require('path');
 
 const use = [
+  'cache-loader',
   {
     loader: 'css-loader',
     options: {
