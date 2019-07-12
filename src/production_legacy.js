@@ -1,6 +1,5 @@
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const TerserPlugin = require('terser-webpack-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const { HashedModuleIdsPlugin, NamedChunksPlugin } = require('webpack');
 const shared = require('./shared_legacy');
 
@@ -29,10 +28,6 @@ module.exports = {
   },
   plugins: [
     ...shared.plugins,
-    new HardSourceWebpackPlugin(),
-    new HardSourceWebpackPlugin.ExcludeModulePlugin([{
-      test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
-    }]),
     new HashedModuleIdsPlugin({}),
     new NamedChunksPlugin(),
     new WebpackAssetsManifest({
