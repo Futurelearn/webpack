@@ -1,7 +1,16 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { resolve } = require('path');
+const { join, resolve } = require('path');
+const config = require('../config');
+
+const cacheLoaderCachePath = join(config.cachePath, 'sass-cache-loader');
 
 const use = [
+  {
+    loader: 'cache-loader',
+    options: {
+      cacheDirectory: cacheLoaderCachePath,
+    },
+  },
   {
     loader: 'css-loader',
   },
