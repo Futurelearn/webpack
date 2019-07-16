@@ -4,9 +4,6 @@ const { resolve } = require('path');
 const use = [
   {
     loader: 'css-loader',
-    options: {
-      minimize: process.env.NODE_ENV === 'production',
-    },
   },
   'resolve-url-loader',
   {
