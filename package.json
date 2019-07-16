@@ -44,7 +44,7 @@
     "sass-loader": "^7.1.0",
     "sass-resources-loader": "^2.0.1",
     "style-loader": "^0.23.1",
-    "terser-webpack-plugin": "^1.1.0",
+    "terser-webpack-plugin": "^1.3.0",
     "webpack": "^4.35.3",
     "webpack-assets-manifest": "https://github.com/webdeveric/webpack-assets-manifest",
     "webpack-cli": "^3.3.6",
