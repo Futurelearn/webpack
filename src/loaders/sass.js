@@ -21,6 +21,7 @@ const use = [
       resources: [
         resolve('app', './assets/stylesheets/application/1-tools/_all.scss'),
         resolve('app', './assets/stylesheets/application/2-brand/_all.scss'),
+        resolve('app', './assets/stylesheets/application/base/_all.scss'),
       ],
     },
   },
@@ -36,5 +37,6 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   test: /\.(scss|sass|css)$/i,
+  exclude: /\.module.(scss|sass|css)$/i,
   use,
 };

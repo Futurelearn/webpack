@@ -5,9 +5,11 @@ const svg = require('./svg');
 const babel = require('./babel');
 const babelES5 = require('./babel.es5');
 const babelNode = require('../server_side_loaders/babel.node');
+const cssModules = require('./css_modules');
 
 module.exports.base = {
   sass,
+  cssModules,
   file,
   svg,
   babel,
