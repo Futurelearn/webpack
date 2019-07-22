@@ -15,10 +15,6 @@ const CSS_MODULE_OPTIONS = {
       5,
     );
 
-    if (process.env.NODE_ENV === 'production') {
-      return hash;
-    }
-
     const className = loaderUtils.interpolateName(
       context,
       `${fileNameOrFolder}-${localName}_${hash}`,
@@ -30,6 +26,7 @@ const CSS_MODULE_OPTIONS = {
   localsConvention: 'asIs',
   sourceMap: process.env.NODE_ENV !== 'production',
   importLoaders: 3,
+  minimize: process.env.NODE_ENV === 'production',
 };
 
 module.exports = CSS_MODULE_OPTIONS;
