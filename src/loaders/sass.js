@@ -4,9 +4,6 @@ const DEFAULT_STYLE_LOADERS = require('./default_style_loaders');
 const use = [
   {
     loader: 'css-loader',
-    options: {
-      minimize: process.env.NODE_ENV === 'production',
-    },
   },
   ...DEFAULT_STYLE_LOADERS,
 ];
