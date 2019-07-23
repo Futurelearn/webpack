@@ -1,8 +1,12 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CSS_MODULE_OPTIONS = require('./css_module_options');
 const DEFAULT_STYLE_LOADERS = require('./default_style_loaders');
 
 const use = [
-  'css-loader',
+  {
+    loader: 'css-loader',
+    options: CSS_MODULE_OPTIONS,
+  },
   ...DEFAULT_STYLE_LOADERS,
 ];
 
@@ -15,7 +19,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-  test: /\.(scss|sass|css)$/i,
-  exclude: /\.module.(scss|sass|css)$/i,
+  test: /\.module.(scss|sass|css)$/i,
   use,
 };
