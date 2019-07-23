@@ -26,6 +26,7 @@ const CSS_MODULE_OPTIONS = {
   localsConvention: 'asIs',
   sourceMap: process.env.NODE_ENV !== 'production',
   importLoaders: 3,
+  onlyLocals: process.env.NODE_ENV === 'production',
   minimize: process.env.NODE_ENV === 'production',
 };
 

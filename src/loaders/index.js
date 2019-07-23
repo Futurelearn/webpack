@@ -5,6 +5,7 @@ const svg = require('./svg');
 const babel = require('./babel');
 const babelES5 = require('./babel.es5');
 const babelNode = require('../server_side_loaders/babel.node');
+const serverCssModules = require('../server_side_loaders/css_modules');
 const cssModules = require('./css_modules');
 
 module.exports.base = {
@@ -17,6 +18,7 @@ module.exports.base = {
 
 module.exports.legacy = {
   noSassLoader,
+  serverCssModules,
   file,
   svg,
   babelES5,
