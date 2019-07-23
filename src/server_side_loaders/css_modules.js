@@ -3,8 +3,8 @@ const DEFAULT_STYLE_LOADERS = require('../loaders/default_style_loaders');
 
 const use = [
   {
-    loader: 'css-loader/locals',
-    options: CSS_MODULE_OPTIONS,
+    loader: 'css-loader',
+    options: { ...CSS_MODULE_OPTIONS, onlyLocals: true },
   },
   ...DEFAULT_STYLE_LOADERS,
 ];

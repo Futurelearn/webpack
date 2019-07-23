@@ -27,7 +27,6 @@ const CSS_MODULE_OPTIONS = {
   sourceMap: process.env.NODE_ENV !== 'production',
   importLoaders: 3,
   onlyLocals: process.env.NODE_ENV === 'production',
-  minimize: process.env.NODE_ENV === 'production',
 };
 
 module.exports = CSS_MODULE_OPTIONS;
