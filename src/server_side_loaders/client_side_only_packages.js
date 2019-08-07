@@ -1,3 +1,14 @@
-const CLIENT_SIDE_ONLY_PACKAGES = /\b(c3|d3|d3v4|react-select|tribute)\b/i;
+const clientSideOnlyPackageNames = [
+  'c3',
+  'd3',
+  'd3v4',
+  'react-select',
+  'tribute',
+];
 
-module.exports = CLIENT_SIDE_ONLY_PACKAGES;
+const pathsRegex = new RegExp(`.*node_modules.*\\b(${clientSideOnlyPackageNames.join('|')})\\b`, 'i')
+
+module.exports = {
+  clientSideOnlyPackageNames,
+  clientSideOnlyPackagePaths: pathsRegex,
+};
