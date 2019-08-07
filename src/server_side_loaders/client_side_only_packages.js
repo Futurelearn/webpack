@@ -1,3 +1,5 @@
+const { resolve } = require('path');
+
 const clientSideOnlyPackageNames = [
   'c3',
   'd3',
@@ -6,9 +8,9 @@ const clientSideOnlyPackageNames = [
   'tribute',
 ];
 
-const pathsRegex = new RegExp(`.*node_modules.*\\b(${clientSideOnlyPackageNames.join('|')})\\b`, 'i')
+const paths = clientSideOnlyPackageNames.map(packageName => resolve(__dirname, `node_modules/${packageName}`));
 
 module.exports = {
   clientSideOnlyPackageNames,
-  clientSideOnlyPackagePaths: pathsRegex,
+  clientSideOnlyPackagePaths: paths,
 };
