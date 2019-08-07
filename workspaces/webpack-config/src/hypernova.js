@@ -7,7 +7,7 @@ const shared = require('./shared');
 const config = require('./config');
 const serverSideLoaders = require('./server_side_loaders');
 const { hypernova } = require('./loaders');
-const CLIENT_SIDE_ONLY_PACKAGES = require('./server_side_loaders/client_side_only_packages');
+const { clientSideOnlyPackageNames } = require('./server_side_loaders/client_side_only_packages');
 
 const hypernovaConfig = {
   ...shared,
@@ -15,7 +15,7 @@ const hypernovaConfig = {
   name: 'hypernova',
   target: 'node',
   externals: [nodeExternals({
-    whitelist: [CLIENT_SIDE_ONLY_PACKAGES],
+    whitelist: clientSideOnlyPackageNames,
   })],
   devtool: 'none',
   module: {

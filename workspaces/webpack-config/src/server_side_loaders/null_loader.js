@@ -1,6 +1,6 @@
-const CLIENT_SIDE_ONLY_PACKAGES = require('./client_side_only_packages');
+const { clientSideOnlyPackagePaths } = require('./client_side_only_packages');
 
 module.exports = {
-  test: CLIENT_SIDE_ONLY_PACKAGES,
+  test: clientSideOnlyPackagePaths,
   use: 'null-loader',
 };
