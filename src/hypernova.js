@@ -14,9 +14,6 @@ const hypernovaConfig = {
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
   name: 'hypernova',
   target: 'node',
-  externals: [nodeExternals({
-    whitelist: clientSideOnlyPackageNames,
-  })],
   devtool: 'none',
   module: {
     ...shared.module,
@@ -45,6 +42,7 @@ const hypernovaConfig = {
     ...shared.output,
     libraryTarget: 'commonjs',
     path: resolve(shared.output.path, 'server'),
+    publicPath: config.output.hypernovaPublicPath,
   },
 };
 
