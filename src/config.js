@@ -63,8 +63,8 @@ module.exports = {
   cachePath: config.cache_path,
   output: {
     path: resolve(config.path),
-    publicPath: externalAssetsHost ? config.external_public_path : config.public_path,
-    hypernovaPublicPath: externalAssetsHost ? config.hypernova_external_public_path : config.hypernova_public_path,
+    publicPath: config.external_public_path,
+    hypernovaPublicPath: config.hypernova_external_public_path,
   },
   assetsVersion: config.assets_version || '1.0',
 };
