@@ -10,6 +10,8 @@ const configPath = resolve('config', 'webpack.yml');
 const railsEnv = process.env.RAILS_ENV || 'production';
 const config = safeLoad(readFileSync(configPath), 'utf8')[railsEnv];
 
+const externalAssetsHost = process.env.EXTERNAL_ASSETS_HOST;
+
 ensureSymlinkSync(config.legacy_src_symlink, config.legacy_dest_symlink);
 
 const getEntries = (entryPaths) => {
@@ -61,8 +63,8 @@ module.exports = {
   cachePath: config.cache_path,
   output: {
     path: resolve(config.path),
-    publicPath: config.public_path,
-    hypernovaPublicPath: config.hypernova_public_path,
+    publicPath: externalAssetsHost ? config.external_public_path : config.public_path,
+    hypernovaPublicPath: externalAssetsHost ? config.hypernova_external_public_path : config.hypernova_public_path,
   },
   assetsVersion: config.assets_version || '1.0',
 };

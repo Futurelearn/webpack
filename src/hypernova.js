@@ -9,11 +9,16 @@ const serverSideLoaders = require('./server_side_loaders');
 const { hypernova } = require('./loaders');
 const { clientSideOnlyPackageNames } = require('./server_side_loaders/client_side_only_packages');
 
+const externalAssetsHost = process.env.EXTERNAL_ASSETS_HOST;
+
 const hypernovaConfig = {
   ...shared,
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
   name: 'hypernova',
   target: 'node',
+  externals: externalAssetsHost ? undefined : [nodeExternals({
+    whitelist: clientSideOnlyPackageNames,
+  })],
   devtool: 'none',
   module: {
     ...shared.module,
@@ -42,7 +47,7 @@ const hypernovaConfig = {
     ...shared.output,
     libraryTarget: 'commonjs',
     path: resolve(shared.output.path, 'server'),
-    publicPath: config.output.hypernovaPublicPath,
+    publicPath: externalAssetsHost ? config.output.hypernovaExternalPublicPath : undefined,
   },
 };
 
