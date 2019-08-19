@@ -5,6 +5,7 @@ const { safeLoad } = require('js-yaml');
 const { readFileSync } = require('fs');
 const { ensureSymlinkSync } = require('fs-extra');
 const { sync } = require('glob');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const configPath = resolve('config', 'webpack.yml');
 const railsEnv = process.env.RAILS_ENV || 'production';
@@ -65,4 +66,7 @@ module.exports = {
     hypernovaPublicPath: process.env.ASSETS_HOST ? `${process.env.ASSETS_HOST}/packs/server` : config.hypernova_public_path,
   },
   assetsVersion: config.assets_version || '1.0',
+  optimization: {
+    minimizer: [new UglifyJsPlugin()],
+  },
 };
