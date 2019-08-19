@@ -61,8 +61,8 @@ module.exports = {
   cachePath: config.cache_path,
   output: {
     path: resolve(config.path),
-    publicPath: config.public_path,
-    hypernovaPublicPath: config.hypernova_public_path,
+    publicPath: process.env.ASSET_HOST ? `${process.env.ASSET_HOST}/packs/` : config.public_path,
+    hypernovaPublicPath: process.env.ASSET_HOST ? `${process.env.ASSET_HOST}/packs/server/` : config.hypernova_public_path,
   },
   assetsVersion: config.assets_version || '1.0',
 };
