@@ -1,7 +1,6 @@
 const clientSideOnlyPackageNames = [
   'c3',
   'd3',
-  'd3v4',
   'react-select',
   'tribute',
 ];
