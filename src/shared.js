@@ -49,4 +49,7 @@ module.exports = {
     filename: `[name]-[chunkhash]-${config.assetsVersion}.js`,
     chunkFilename: `[name]-[chunkhash]-${config.assetsVersion}.js`,
   },
+  externals: {
+    jquery: 'jQuery',
+  },
 };
