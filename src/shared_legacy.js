@@ -1,6 +1,6 @@
 const config = require('./config');
 const loaders = require('./loaders');
-const { mode, plugins, optimization, externals } = require('./shared');
+const { mode, plugins, optimization } = require('./shared');
 
 module.exports = {
   entry: config.legacyEntries,
@@ -23,5 +23,4 @@ module.exports = {
     filename: `[name]-[chunkhash]-${config.assetsVersion}.es5.js`,
     chunkFilename: `[name]-[chunkhash]-${config.assetsVersion}.es5.js`,
   },
-  externals,
 };
