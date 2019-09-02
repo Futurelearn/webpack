@@ -6285,9 +6285,9 @@ webidl-conversions@^4.0.2:
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
   integrity sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==
 
-"webpack-assets-manifest@https://github.com/webdeveric/webpack-assets-manifest":
+"webpack-assets-manifest@git+https://github.com/webdeveric/webpack-assets-manifest.git":
   version "3.1.1"
-  resolved "https://github.com/webdeveric/webpack-assets-manifest#051243ec8963be69ab8565b5998032cc3a020a7a"
+  resolved "git+https://github.com/webdeveric/webpack-assets-manifest.git#051243ec8963be69ab8565b5998032cc3a020a7a"
   dependencies:
     chalk "^2.0"
     lodash.get "^4.0"
