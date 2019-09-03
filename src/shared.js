@@ -41,7 +41,15 @@ module.exports = {
         },
       },
     },
-    runtimeChunk: 'single',
+    runtimeChunk: {
+      name(entrypoint) {
+        if (entrypoint.name === 'packs/applicationInit') {
+          return 'init';
+        }
+
+        return 'runtime';
+      },
+    },
   },
   output: {
     path: config.output.path,
