@@ -3,6 +3,7 @@ const { resolve } = require('path');
 const DEFAULT_STYLE_LOADERS = require('./default_style_loaders');
 
 const use = [
+  MiniCssExtractPlugin.loader,
   'css-loader',
   ...DEFAULT_STYLE_LOADERS,
   {
@@ -16,14 +17,6 @@ const use = [
     },
   },
 ];
-
-if (process.env.NODE_ENV !== 'production') {
-  use.unshift({ loader: 'style-loader' });
-}
-
-if (process.env.NODE_ENV === 'production') {
-  use.unshift(MiniCssExtractPlugin.loader);
-}
 
 module.exports = {
   test: /\.(scss|sass|css)$/i,

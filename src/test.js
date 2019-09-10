@@ -1,3 +1,4 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const { DefinePlugin } = require('webpack');
 const shared = require('./shared');
@@ -7,6 +8,7 @@ module.exports = {
   name: 'test',
   plugins: [
     ...shared.plugins,
+    new MiniCssExtractPlugin(),
     new WebpackAssetsManifest({
       entrypoints: true,
       writeToDisk: true,
