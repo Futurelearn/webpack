@@ -1,3 +1,4 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const nodeExternals = require('webpack-node-externals');
 const { DefinePlugin } = require('webpack');
@@ -26,6 +27,7 @@ const hypernovaConfig = {
   },
   plugins: [
     ...shared.plugins,
+    new MiniCssExtractPlugin(),
     new WebpackAssetsManifest({
       entrypoints: false,
       writeToDisk: true,
