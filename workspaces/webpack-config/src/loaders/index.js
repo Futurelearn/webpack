@@ -8,10 +8,17 @@ const babelNode = require('../server_side_loaders/babel.node');
 const serverCssModules = require('../server_side_loaders/css_modules');
 const cssModules = require('./css_modules');
 
+const fileWithoutPrintProductFonts = {
+  ...file,
+  exclude: [
+    /app\/assets\/fonts\/print_products/,
+  ],
+};
+
 module.exports.base = {
   sass,
   cssModules,
-  file,
+  file: fileWithoutPrintProductFonts,
   svg,
   babel,
 };
@@ -19,7 +26,7 @@ module.exports.base = {
 module.exports.legacy = {
   noSassLoader,
   serverCssModules,
-  file,
+  file: fileWithoutPrintProductFonts,
   svg,
   babelES5,
 };
