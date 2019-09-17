@@ -1,4 +1,3 @@
-const { resolve } = require('path');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const nodeExternals = require('webpack-node-externals');
 const { DefinePlugin } = require('webpack');
