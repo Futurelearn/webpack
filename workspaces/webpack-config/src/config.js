@@ -62,6 +62,7 @@ module.exports = {
   output: {
     path: resolve(config.path),
     publicPath: process.env.ASSET_HOST ? `${process.env.ASSET_HOST}/packs/` : config.public_path,
+    hypernovaPath: resolve(config.hypernova_path),
     hypernovaPublicPath: config.hypernova_public_path,
   },
   assetsVersion: config.assets_version || '1.0',
