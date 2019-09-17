@@ -44,7 +44,7 @@ const hypernovaConfig = {
   output: {
     ...shared.output,
     libraryTarget: 'commonjs',
-    path: resolve(shared.output.path, 'server'),
+    path: config.output.hypernovaPath,
   },
 };
 
