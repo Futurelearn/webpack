@@ -15,6 +15,7 @@ ensureSymlinkSync(config.legacy_src_symlink, config.legacy_dest_symlink);
 const getEntries = (entryPaths) => {
   const entries = {};
   const legacyEntries = {};
+  const serverEntries = {};
 
   entryPaths.forEach(({
     glob,
@@ -22,6 +23,7 @@ const getEntries = (entryPaths) => {
     root_path: rootPath,
     resolved_extensions: resolvedExtensions,
     legacy,
+    server,
   }) => {
     const entryGlob = `${rootPath}${glob}{${resolvedExtensions.join(',')}}`;
     const paths = sync(entryGlob);
@@ -30,6 +32,9 @@ const getEntries = (entryPaths) => {
       if (useDirName) {
         const entryDir = dirname(path);
         const entryDirWithoutRootPath = entryDir.replace(rootPath, '');
+        if (server) {
+          serverEntries[`${entryDirWithoutRootPath}`] = resolve(path);
+        }
         if (legacy) {
           legacyEntries[`${entryDirWithoutRootPath}`] = resolve(path);
         } else {
@@ -38,6 +43,9 @@ const getEntries = (entryPaths) => {
       } else {
         const pathWithoutRootPath = path.replace(rootPath, '');
         const pathWithoutExtension = pathWithoutRootPath.replace(extname(path), '');
+        if (server) {
+          serverEntries[`${pathWithoutExtension}`] = resolve(path);
+        }
         if (legacy) {
           legacyEntries[`${pathWithoutExtension}`] = resolve(path);
         } else {
@@ -47,14 +55,15 @@ const getEntries = (entryPaths) => {
     });
   });
 
-  return { entries, legacyEntries };
+  return { entries, legacyEntries, serverEntries };
 };
 
-const { entries, legacyEntries } = getEntries(config.entry_paths);
+const { entries, legacyEntries, serverEntries } = getEntries(config.entry_paths);
 
 module.exports = {
   entries,
   legacyEntries,
+  serverEntries,
   extensions: config.extensions,
   resolvedPaths: config.resolved_paths,
   legacyResolvedPaths: config.resolved_legacy_paths,

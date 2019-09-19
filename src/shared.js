@@ -1,7 +1,8 @@
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const { EnvironmentPlugin } = require('webpack');
 const config = require('./config');
 const loaders = require('./loaders');
+
+// console.log(process.env);
 
 module.exports = {
   entry: config.entries,
@@ -17,7 +18,6 @@ module.exports = {
   },
   mode: 'production',
   plugins: [
-    new EnvironmentPlugin({ ...process.env }),
     new LodashModuleReplacementPlugin(),
   ],
   optimization: {
@@ -48,5 +48,6 @@ module.exports = {
     publicPath: config.output.publicPath,
     filename: `[name]-[chunkhash]-${config.assetsVersion}.js`,
     chunkFilename: `[name]-[chunkhash]-${config.assetsVersion}.js`,
+    futureEmitAssets: true,
   },
 };

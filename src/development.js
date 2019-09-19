@@ -16,27 +16,13 @@ module.exports = {
     }),
   ],
   optimization: {
-    ...shared.optimization,
     splitChunks: {
-      cacheGroups: {
-        common: {
-          test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            if (!module.nameForCondition) {
-              return true;
-            }
-
-            const packageName = module.nameForCondition().match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-            return `npm.${packageName.replace('@', '')}`;
-          },
-        },
-      },
+      chunks: 'all',
     },
   },
   output: {
     ...shared.output,
     filename: `[name].js`,
     chunkFilename: `[name].js`,
-
   },
 };
