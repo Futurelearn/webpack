@@ -11,6 +11,7 @@ const { clientSideOnlyPackageNames } = require('./server_side_loaders/client_sid
 
 const hypernovaConfig = {
   ...shared,
+  entry: config.serverEntries,
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
   name: 'hypernova',
   target: 'node',
