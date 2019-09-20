@@ -10,11 +10,11 @@ const use = [
   ...DEFAULT_STYLE_LOADERS,
 ];
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production' && !process.env.USE_STYLESHEETS) {
   use.unshift({ loader: 'style-loader' });
 }
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production' || process.env.USE_STYLESHEETS) {
   use.unshift(MiniCssExtractPlugin.loader);
 }
 
