@@ -2,7 +2,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const shared = require('./shared');
 
-module.exports = {
+const developmentConfig = {
   ...shared,
   mode: 'development',
   name: 'development',
@@ -40,3 +40,11 @@ module.exports = {
 
   },
 };
+
+if (process.env.USE_STYLESHEETS) {
+  developmentConfig.plugins.unshift(new MiniCssExtractPlugin({
+    filename: `[name].css`,
+  }));
+}
+
+module.exports = developmentConfig;
