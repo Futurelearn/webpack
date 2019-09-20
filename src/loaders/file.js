@@ -7,7 +7,7 @@ module.exports = {
     {
       loader: 'file-loader',
       options: {
-        name: '[path][name]-[hash].[ext]',
+        name: (process.env.NODE_ENV === 'production') ? '[path][name]-[contenthash].[ext]' : '[path][name].[ext]',
       },
     },
   ],
