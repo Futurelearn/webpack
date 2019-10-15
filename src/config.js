@@ -3,14 +3,11 @@ const {
 } = require('path');
 const { safeLoad } = require('js-yaml');
 const { readFileSync } = require('fs');
-const { ensureSymlinkSync } = require('fs-extra');
 const { sync } = require('glob');
 
 const configPath = resolve('config', 'webpack.yml');
 const railsEnv = process.env.RAILS_ENV || 'production';
 const config = safeLoad(readFileSync(configPath), 'utf8')[railsEnv];
-
-ensureSymlinkSync(config.legacy_src_symlink, config.legacy_dest_symlink);
 
 const getEntries = (entryPaths) => {
   const entries = {};
