@@ -9,6 +9,14 @@ const configPath = resolve('config', 'webpack.yml');
 const railsEnv = process.env.RAILS_ENV || 'production';
 const config = safeLoad(readFileSync(configPath), 'utf8')[railsEnv];
 
+const entryName = ({ useDirName, rootPath, path }) => {
+  if (useDirName) {
+    return dirname(path).replace(rootPath, '');
+  } else {
+    return path.replace(rootPath, '').replace(extname(path), '');
+  }
+};
+
 const getEntries = (entryPaths) => {
   const entries = {};
   const legacyEntries = {};
@@ -25,26 +33,15 @@ const getEntries = (entryPaths) => {
     const paths = sync(entryGlob);
 
     paths.forEach((path) => {
-      if (useDirName) {
-        const entryDir = dirname(path);
-        const entryDirWithoutRootPath = entryDir.replace(rootPath, '');
-        if (server) {
-          serverEntries[`${entryDirWithoutRootPath}`] = resolve(path);
-        } else if (legacy) {
-          legacyEntries[`${entryDirWithoutRootPath}`] = resolve(path);
-        } else {
-          entries[`${entryDirWithoutRootPath}`] = resolve(path);
-        }
+      const key = entryName({ useDirName, rootPath, path });
+      const value = resolve(path);
+
+      if (server) {
+        serverEntries[key] = value;
+      } else if (legacy) {
+        legacyEntries[key] = value;
       } else {
-        const pathWithoutRootPath = path.replace(rootPath, '');
-        const pathWithoutExtension = pathWithoutRootPath.replace(extname(path), '');
-        if (server) {
-          serverEntries[`${pathWithoutExtension}`] = resolve(path);
-        } else if (legacy) {
-          legacyEntries[`${pathWithoutExtension}`] = resolve(path);
-        } else {
-          entries[`${pathWithoutExtension}`] = resolve(path);
-        }
+        entries[key] = value;
       }
     });
   });
