@@ -6,7 +6,7 @@ module.exports = {
   entry: config.legacyEntries,
   resolve: {
     extensions: config.extensions,
-    modules: [...config.legacyResolvedPaths, 'node_modules'],
+    modules: [...config.resolvedPaths, 'node_modules'],
     alias: {
       tribute: 'tributejs/dist/tribute.min.js',
     },
