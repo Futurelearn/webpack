@@ -60,7 +60,6 @@ module.exports = {
   serverEntries,
   extensions: config.extensions,
   resolvedPaths: config.resolved_paths,
-  legacyResolvedPaths: config.resolved_legacy_paths,
   cachePath: config.cache_path,
   output: {
     path: resolve(config.path),
