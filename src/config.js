@@ -18,11 +18,10 @@ const getEntries = (entryPaths) => {
     glob,
     use_dir_name: useDirName,
     root_path: rootPath,
-    resolved_extensions: resolvedExtensions,
     legacy,
     server,
   }) => {
-    const entryGlob = `${rootPath}${glob}{${resolvedExtensions.join(',')}}`;
+    const entryGlob = `${rootPath}${glob}`;
     const paths = sync(entryGlob);
 
     paths.forEach((path) => {
