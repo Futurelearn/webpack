@@ -26,8 +26,7 @@ const getEntries = (entryPaths) => {
     glob,
     use_dir_name: useDirName,
     root_path: rootPath,
-    legacy,
-    server,
+    builds,
   }) => {
     const entryGlob = `${rootPath}${glob}`;
     const paths = sync(entryGlob);
@@ -36,11 +35,13 @@ const getEntries = (entryPaths) => {
       const key = entryName({ useDirName, rootPath, path });
       const value = resolve(path);
 
-      if (server) {
+      if (builds.includes('server')) {
         serverEntries[key] = value;
-      } else if (legacy) {
+      }
+      if (builds.includes('legacy')) {
         legacyEntries[key] = value;
-      } else {
+      }
+      if (builds.includes('main')) {
         entries[key] = value;
       }
     });
