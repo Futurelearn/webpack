@@ -1,11 +1,19 @@
+const { use: fileLoader } = require('./file');
+
 module.exports = {
-  test: /shared\/svg_icons\/.+html/,
-  use: [
+  test: /\.svg$/,
+  oneOf: [
     {
-      loader: '@svgr/webpack',
-      options: {
-        svgo: false,
+      resourceQuery: /inline/,
+      use: {
+        loader: '@svgr/webpack',
+        options: {
+          svgo: false,
+        },
       },
+    },
+    {
+      use: fileLoader,
     },
   ],
 };
